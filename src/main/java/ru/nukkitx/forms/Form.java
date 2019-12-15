@@ -10,6 +10,12 @@ public abstract class Form {
     public static HashMap<String, HashMap<String, Object>> paramsForm = new HashMap();
     protected FormWindow form;
 
+    public final void send(Player player) {
+        playersForm.remove(player.getName());
+        paramsForm.remove(player.getName());
+        player.showFormWindow(form);
+    }
+
     public final void send(Player player, FormResponse response) {
         playersForm.put(player.getName(), response);
         paramsForm.put(player.getName(), null);
