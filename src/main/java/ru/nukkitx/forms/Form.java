@@ -6,8 +6,8 @@ import cn.nukkit.form.window.FormWindow;
 import java.util.HashMap;
 
 public abstract class Form {
-    public static HashMap<String, FormResponse> playersForm = new HashMap();
-    public static HashMap<String, HashMap<String, Object>> paramsForm = new HashMap();
+    public static HashMap<String, FormResponse> playersForm = new HashMap<>();
+    public static HashMap<String, HashMap<String, Object>> paramsForm = new HashMap<>();
     protected FormWindow form;
 
     public final void send(Player player) {

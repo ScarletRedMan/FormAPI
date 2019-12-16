@@ -1,6 +1,5 @@
 package ru.nukkitx.forms.elements;
 
-import cn.nukkit.form.window.FormWindow;
 import cn.nukkit.form.window.FormWindowModal;
 import ru.nukkitx.forms.Form;
 

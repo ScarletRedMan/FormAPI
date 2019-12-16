@@ -44,7 +44,7 @@ public class EventListener implements Listener {
             }
 
             if (window instanceof FormWindowCustom) {
-                data = new ArrayList(((FormResponseCustom) response).getResponses().values());
+                data = new ArrayList<>(((FormResponseCustom) response).getResponses().values());
                 Form.playersForm.get(player.getName()).handle(player, window, data, Form.paramsForm.get(player.getName()));
                 return;
             }

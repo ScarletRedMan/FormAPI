@@ -2,7 +2,6 @@ package ru.nukkitx.forms.elements;
 
 import cn.nukkit.form.element.ElementButton;
 import cn.nukkit.form.element.ElementButtonImageData;
-import cn.nukkit.form.window.FormWindow;
 import cn.nukkit.form.window.FormWindowSimple;
 import ru.nukkitx.forms.Form;
 
