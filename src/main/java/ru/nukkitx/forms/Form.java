@@ -27,4 +27,16 @@ public abstract class Form {
         paramsForm.put(player.getName(), params);
         player.showFormWindow(form);
     }
+
+    public static void sendForm(Player player, FormWindow form, FormResponse response){
+        playersForm.put(player.getName(), response);
+        paramsForm.put(player.getName(), null);
+        player.showFormWindow(form);
+    }
+
+    public static void sendForm(Player player, FormWindow form, FormResponse response, HashMap<String, Object> params) {
+        playersForm.put(player.getName(), response);
+        paramsForm.put(player.getName(), params);
+        player.showFormWindow(form);
+    }
 }
