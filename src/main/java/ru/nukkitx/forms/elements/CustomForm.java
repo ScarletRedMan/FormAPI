@@ -1,12 +1,17 @@
 package ru.nukkitx.forms.elements;
 
 import cn.nukkit.form.element.*;
+import cn.nukkit.form.window.FormWindow;
 import cn.nukkit.form.window.FormWindowCustom;
 import ru.nukkitx.forms.Form;
 
 import java.util.List;
 
 public class CustomForm extends Form {
+
+    public CustomForm(FormWindowCustom form){
+        this.form = form;
+    }
 
     public CustomForm() {
         form = new FormWindowCustom("");

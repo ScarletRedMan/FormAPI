@@ -2,10 +2,15 @@ package ru.nukkitx.forms.elements;
 
 import cn.nukkit.form.element.ElementButton;
 import cn.nukkit.form.element.ElementButtonImageData;
+import cn.nukkit.form.window.FormWindow;
 import cn.nukkit.form.window.FormWindowSimple;
 import ru.nukkitx.forms.Form;
 
 public class SimpleForm extends Form {
+
+    public SimpleForm(FormWindowSimple form){
+        this.form = form;
+    }
 
     public SimpleForm() {
         form = new FormWindowSimple("", "");

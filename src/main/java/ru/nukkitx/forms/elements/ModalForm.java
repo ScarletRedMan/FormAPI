@@ -1,9 +1,14 @@
 package ru.nukkitx.forms.elements;
 
+import cn.nukkit.form.window.FormWindow;
 import cn.nukkit.form.window.FormWindowModal;
 import ru.nukkitx.forms.Form;
 
 public class ModalForm extends Form {
+
+    public ModalForm(FormWindowModal form){
+        this.form = form;
+    }
 
     public ModalForm() {
         form = new FormWindowModal("", "", "", "");
