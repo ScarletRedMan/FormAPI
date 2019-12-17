@@ -11,8 +11,6 @@ public abstract class Form {
     protected FormWindow form;
 
     public final void send(Player player) {
-        playersForm.remove(player.getName());
-        paramsForm.remove(player.getName());
         player.showFormWindow(form);
     }
 

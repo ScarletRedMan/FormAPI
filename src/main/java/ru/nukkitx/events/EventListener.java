@@ -28,12 +28,15 @@ public class EventListener implements Listener {
 
         if (response == null) return;
 
-        if (Form.playersForm.containsKey(player.getName())) {
+        if (Form.playersForm.containsKey(player.getName()) && Form.paramsForm.containsKey(player.getName())) {
+            ru.nukkitx.forms.FormResponse temp = Form.playersForm.get(player.getName());
+            Form.playersForm.remove(player.getName());
+
             Object data;
 
             if (event.wasClosed()) {
                 data = null;
-                Form.playersForm.get(player.getName()).handle(player, window, data, Form.paramsForm.get(player.getName()));
+                temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
                 return;
             }
 
@@ -45,13 +48,13 @@ public class EventListener implements Listener {
 
             if (window instanceof FormWindowCustom) {
                 data = new ArrayList<>(((FormResponseCustom) response).getResponses().values());
-                Form.playersForm.get(player.getName()).handle(player, window, data, Form.paramsForm.get(player.getName()));
+                temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
                 return;
             }
 
             if (window instanceof FormWindowModal) {
                 data = ((FormResponseModal) response).getClickedButtonId();
-                Form.playersForm.get(player.getName()).handle(player, window, data, Form.paramsForm.get(player.getName()));
+                temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
                 return;
             }
         }
