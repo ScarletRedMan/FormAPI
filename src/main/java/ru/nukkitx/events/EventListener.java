@@ -42,7 +42,7 @@ public class EventListener implements Listener {
 
             if (window instanceof FormWindowSimple) {
                 data = ((FormResponseSimple) response).getClickedButtonId();
-                Form.playersForm.get(player.getName()).handle(player, window, data, Form.paramsForm.get(player.getName()));
+                temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
                 return;
             }
 
