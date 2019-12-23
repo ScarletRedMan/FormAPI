@@ -40,7 +40,7 @@ public class SimpleForm extends Form {
 
     public SimpleForm addButton(String text, ImageType type, String ico) {
         ElementButton button = new ElementButton(text);
-        button.addImage(new ElementButtonImageData((type == ImageType.PAHT) ? "path" : "url", ico));
+        button.addImage(new ElementButtonImageData((type == ImageType.PATH) ? "path" : "url", ico));
         ((FormWindowSimple) form).addButton(button);
         return this;
     }
