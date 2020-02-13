@@ -14,12 +14,17 @@ import cn.nukkit.form.window.FormWindow;
 import cn.nukkit.form.window.FormWindowCustom;
 import cn.nukkit.form.window.FormWindowModal;
 import cn.nukkit.form.window.FormWindowSimple;
+import ru.nukkitx.forms.CustomFormResponse;
 import ru.nukkitx.forms.Form;
+import ru.nukkitx.forms.ModalFormResponse;
+import ru.nukkitx.forms.SimpleFormResponse;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EventListener implements Listener {
 
+    @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.HIGH)
     public void formResponded(PlayerFormRespondedEvent event) {
         Player player = event.getPlayer();
@@ -35,27 +40,49 @@ public class EventListener implements Listener {
             Object data;
 
             if (event.wasClosed()) {
-                data = null;
-                temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
+                if(temp instanceof CustomFormResponse){
+                    ((CustomFormResponse) temp).handle(player, window, null);
+
+                }else if(temp instanceof ModalFormResponse) {
+                    ((ModalFormResponse) temp).handle(player, window, -1);
+
+                }else if(temp instanceof SimpleFormResponse){
+                    ((SimpleFormResponse) temp).handle(player, window, -1);
+
+                }else temp.handle(player, window, null, Form.paramsForm.get(player.getName()));
+
                 return;
             }
 
             if (window instanceof FormWindowSimple) {
                 data = ((FormResponseSimple) response).getClickedButtonId();
-                temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
+
+                if(temp instanceof SimpleFormResponse)
+                    ((SimpleFormResponse) temp).handle(player, window, (int) data);
+                else
+                    temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
+
                 return;
             }
 
             if (window instanceof FormWindowCustom) {
                 data = new ArrayList<>(((FormResponseCustom) response).getResponses().values());
-                temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
+
+                if(temp instanceof CustomFormResponse)
+                    ((CustomFormResponse) temp).handle(player, window, (List<Object>)data);
+                else
+                    temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
+
                 return;
             }
 
             if (window instanceof FormWindowModal) {
                 data = ((FormResponseModal) response).getClickedButtonId();
-                temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
-                return;
+
+                if(temp instanceof ModalFormResponse)
+                    ((ModalFormResponse) temp).handle(player, window, (int) data);
+                else
+                    temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
             }
         }
     }

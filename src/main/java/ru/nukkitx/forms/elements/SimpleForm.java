@@ -1,9 +1,11 @@
 package ru.nukkitx.forms.elements;
 
+import cn.nukkit.Player;
 import cn.nukkit.form.element.ElementButton;
 import cn.nukkit.form.element.ElementButtonImageData;
 import cn.nukkit.form.window.FormWindowSimple;
 import ru.nukkitx.forms.Form;
+import ru.nukkitx.forms.SimpleFormResponse;
 
 public class SimpleForm extends Form {
 
@@ -21,6 +23,12 @@ public class SimpleForm extends Form {
 
     public SimpleForm(String title, String content) {
         form = new FormWindowSimple(title, content);
+    }
+
+    public void send(Player player, SimpleFormResponse response) {
+        playersForm.put(player.getName(), response);
+        paramsForm.put(player.getName(), null);
+        player.showFormWindow(form);
     }
 
     public SimpleForm setTitle(String value) {

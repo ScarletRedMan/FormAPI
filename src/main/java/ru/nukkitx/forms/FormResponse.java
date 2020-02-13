@@ -7,13 +7,6 @@ import java.util.HashMap;
 
 public interface FormResponse {
 
-    /*
-     *
-     * player - Игрок.
-     * window - Форма, полученного результата.
-     * data - Результат формы (является null, если форма была закрыта)
-     *
-     */
-
+    @Deprecated
     void handle(Player player, FormWindow window, Object data, HashMap<String, Object> params);
 }

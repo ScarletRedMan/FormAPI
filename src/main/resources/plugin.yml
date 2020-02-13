@@ -1,7 +1,7 @@
 name: FormAPI
 main: ru.nukkitx.FormAPI
 api: "1.0.9"
-version: "1.0"
+version: "1.2"
 author: qPexLegendary
 load: STARTUP
 authors:

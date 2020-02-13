@@ -10,17 +10,19 @@ public abstract class Form {
     public static HashMap<String, HashMap<String, Object>> paramsForm = new HashMap<>();
     protected FormWindow form;
 
-    public final void send(Player player) {
+    public void send(Player player) {
         player.showFormWindow(form);
     }
 
-    public final void send(Player player, FormResponse response) {
+    @Deprecated
+    public void send(Player player, FormResponse response) {
         playersForm.put(player.getName(), response);
         paramsForm.put(player.getName(), null);
         player.showFormWindow(form);
     }
 
-    public final void send(Player player, FormResponse response, HashMap<String, Object> params) {
+    @Deprecated
+    public void send(Player player, FormResponse response, HashMap<String, Object> params) {
         playersForm.put(player.getName(), response);
         paramsForm.put(player.getName(), params);
         player.showFormWindow(form);
