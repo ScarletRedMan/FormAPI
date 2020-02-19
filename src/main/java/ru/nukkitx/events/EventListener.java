@@ -30,15 +30,13 @@ public class EventListener implements Listener {
         FormWindow window = event.getWindow();
         FormResponse response = window.getResponse();
 
-        if (response == null) return;
-
         if (Form.playersForm.containsKey(player.getName())) {
             ru.nukkitx.forms.FormResponse temp = Form.playersForm.get(player.getName());
             Form.playersForm.remove(player.getName());
 
             Object data;
 
-            if (event.wasClosed()) {
+            if (response == null || event.wasClosed()) {
                 if(temp instanceof CustomFormResponse){
                     ((CustomFormResponse) temp).handle(player, window, null);
 
@@ -47,7 +45,6 @@ public class EventListener implements Listener {
 
                 }else if(temp instanceof SimpleFormResponse){
                     ((SimpleFormResponse) temp).handle(player, window, -1);
-
                 }
                 return;
             }
