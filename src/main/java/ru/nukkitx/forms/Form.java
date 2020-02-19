@@ -28,12 +28,32 @@ public abstract class Form {
         player.showFormWindow(form);
     }
 
+    @Deprecated
     public static void sendForm(Player player, FormWindow form, FormResponse response){
         playersForm.put(player.getName(), response);
         paramsForm.put(player.getName(), null);
         player.showFormWindow(form);
     }
 
+    public static void sendForm(Player player, FormWindow form, ModalFormResponse response){
+        playersForm.put(player.getName(), response);
+        paramsForm.put(player.getName(), null);
+        player.showFormWindow(form);
+    }
+
+    public static void sendForm(Player player, FormWindow form, CustomFormResponse response){
+        playersForm.put(player.getName(), response);
+        paramsForm.put(player.getName(), null);
+        player.showFormWindow(form);
+    }
+
+    public static void sendForm(Player player, FormWindow form, SimpleFormResponse response){
+        playersForm.put(player.getName(), response);
+        paramsForm.put(player.getName(), null);
+        player.showFormWindow(form);
+    }
+
+    @Deprecated
     public static void sendForm(Player player, FormWindow form, FormResponse response, HashMap<String, Object> params) {
         playersForm.put(player.getName(), response);
         paramsForm.put(player.getName(), params);
