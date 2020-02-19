@@ -24,7 +24,6 @@ import java.util.List;
 
 public class EventListener implements Listener {
 
-    @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.HIGH)
     public void formResponded(PlayerFormRespondedEvent event) {
         Player player = event.getPlayer();
@@ -33,7 +32,7 @@ public class EventListener implements Listener {
 
         if (response == null) return;
 
-        if (Form.playersForm.containsKey(player.getName()) && Form.paramsForm.containsKey(player.getName())) {
+        if (Form.playersForm.containsKey(player.getName())) {
             ru.nukkitx.forms.FormResponse temp = Form.playersForm.get(player.getName());
             Form.playersForm.remove(player.getName());
 
@@ -49,40 +48,25 @@ public class EventListener implements Listener {
                 }else if(temp instanceof SimpleFormResponse){
                     ((SimpleFormResponse) temp).handle(player, window, -1);
 
-                }else temp.handle(player, window, null, Form.paramsForm.get(player.getName()));
-
+                }
                 return;
             }
 
             if (window instanceof FormWindowSimple) {
                 data = ((FormResponseSimple) response).getClickedButtonId();
-
-                if(temp instanceof SimpleFormResponse)
-                    ((SimpleFormResponse) temp).handle(player, window, (int) data);
-                else
-                    temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
-
+                ((SimpleFormResponse) temp).handle(player, window, (int) data);
                 return;
             }
 
             if (window instanceof FormWindowCustom) {
                 data = new ArrayList<>(((FormResponseCustom) response).getResponses().values());
-
-                if(temp instanceof CustomFormResponse)
-                    ((CustomFormResponse) temp).handle(player, window, (List<Object>)data);
-                else
-                    temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
-
+                ((CustomFormResponse) temp).handle(player, window, (List<Object>)data);
                 return;
             }
 
             if (window instanceof FormWindowModal) {
                 data = ((FormResponseModal) response).getClickedButtonId();
-
-                if(temp instanceof ModalFormResponse)
-                    ((ModalFormResponse) temp).handle(player, window, (int) data);
-                else
-                    temp.handle(player, window, data, Form.paramsForm.get(player.getName()));
+                ((ModalFormResponse) temp).handle(player, window, (int) data);
             }
         }
     }
@@ -92,6 +76,5 @@ public class EventListener implements Listener {
         Player player = event.getPlayer();
 
         Form.playersForm.remove(player.getName());
-        Form.paramsForm.remove(player.getName());
     }
 }

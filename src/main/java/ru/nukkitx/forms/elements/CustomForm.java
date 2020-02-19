@@ -24,7 +24,6 @@ public class CustomForm extends Form {
 
     public void send(Player player, CustomFormResponse response){
         playersForm.put(player.getName(), response);
-        paramsForm.put(player.getName(), null);
         player.showFormWindow(form);
     }
 

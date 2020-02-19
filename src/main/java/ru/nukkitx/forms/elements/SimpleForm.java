@@ -27,7 +27,6 @@ public class SimpleForm extends Form {
 
     public void send(Player player, SimpleFormResponse response) {
         playersForm.put(player.getName(), response);
-        paramsForm.put(player.getName(), null);
         player.showFormWindow(form);
     }
 
