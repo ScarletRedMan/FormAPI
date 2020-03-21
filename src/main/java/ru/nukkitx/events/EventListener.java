@@ -38,32 +38,32 @@ public class EventListener implements Listener {
 
             if (response == null || event.wasClosed()) {
                 if(temp instanceof CustomFormResponse){
-                    ((CustomFormResponse) temp).handle(player, window, null);
+                    ((CustomFormResponse) temp).handle(player, (FormWindowCustom) window, null);
 
                 }else if(temp instanceof ModalFormResponse) {
-                    ((ModalFormResponse) temp).handle(player, window, -1);
+                    ((ModalFormResponse) temp).handle(player, (FormWindowModal) window, -1);
 
                 }else if(temp instanceof SimpleFormResponse){
-                    ((SimpleFormResponse) temp).handle(player, window, -1);
+                    ((SimpleFormResponse) temp).handle(player, (FormWindowSimple) window, -1);
                 }
                 return;
             }
 
             if (window instanceof FormWindowSimple) {
                 data = ((FormResponseSimple) response).getClickedButtonId();
-                ((SimpleFormResponse) temp).handle(player, window, (int) data);
+                ((SimpleFormResponse) temp).handle(player, (FormWindowSimple) window, (int) data);
                 return;
             }
 
             if (window instanceof FormWindowCustom) {
                 data = new ArrayList<>(((FormResponseCustom) response).getResponses().values());
-                ((CustomFormResponse) temp).handle(player, window, (List<Object>)data);
+                ((CustomFormResponse) temp).handle(player, (FormWindowCustom) window, (List<Object>) data);
                 return;
             }
 
             if (window instanceof FormWindowModal) {
                 data = ((FormResponseModal) response).getClickedButtonId();
-                ((ModalFormResponse) temp).handle(player, window, (int) data);
+                ((ModalFormResponse) temp).handle(player, (FormWindowModal) window, (int) data);
             }
         }
     }
