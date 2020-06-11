@@ -54,3 +54,5 @@ ModalForm
     });
                             
 ![screenshot of sample](http://images.vfl.ru/ii/1576486613/7c402664/28925022.png)
+-----------------------------------
+Скачать: https://github.com/qPexLegendary/FormAPI/releases
