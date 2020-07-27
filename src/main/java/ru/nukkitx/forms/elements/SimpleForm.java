@@ -40,6 +40,19 @@ public class SimpleForm extends Form {
         return this;
     }
 
+    public SimpleForm addContent(String value){
+        ((FormWindowSimple) form).setContent(((FormWindowSimple) form).getContent() + value);
+        return this;
+    }
+
+    public SimpleForm addContentLine(String value){
+        return addContent(value + "\n");
+    }
+
+    public SimpleForm addContentOnNextLine(String value){
+        return addContent("\n" + value);
+    }
+
     public SimpleForm addButton(String text) {
         ((FormWindowSimple) form).addButton(new ElementButton(text));
         return this;
